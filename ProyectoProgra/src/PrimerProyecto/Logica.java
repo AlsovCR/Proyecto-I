@@ -48,8 +48,8 @@ public class Logica {
             for (int f = 0 ; f<tablero.length; f++){
                 if (tablero[f][c]==jugada)
                     jugada++;
-        
-        
+            }
+        }
     }
 }
 

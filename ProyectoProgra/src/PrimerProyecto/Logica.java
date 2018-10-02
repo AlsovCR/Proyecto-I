@@ -12,7 +12,7 @@ package PrimerProyecto;
  */
 
 public class Logica {
-
+    
     public int [][] generaMatriz (int jugada){
         
         int tablero [][] = new int [3][3];
@@ -31,21 +31,26 @@ public class Logica {
         
     }
     
-    public int ganaFilas (int tablero [][], int jugada){
+    public void ganaFilas (int tablero [][], int jugada){
         
         for ( int f = 0 ; f<tablero.length; f++){
             
             for (int c = 0 ; c<tablero[0].length; c++){
-                
-            }
-            
+                if (tablero[f][c]==jugada)
+                    jugada++;
+            }    
         }
+    } 
+    
+    public void ganaColumnas (int tablero [][], int jugada){
+        for ( int c = 0 ; c<tablero[0].length; c++){
+            
+            for (int f = 0 ; f<tablero.length; f++){
+                if (tablero[f][c]==jugada)
+                    jugada++;
         
         
     }
-    
-    
-    
 }
 
 

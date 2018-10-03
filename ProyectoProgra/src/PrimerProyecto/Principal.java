@@ -34,7 +34,7 @@ public class Principal extends Application {
 
         
 
-        Scene scene = new Scene(in.borderPane(), 500, 500);
+        Scene scene = new Scene(in.borderPane(), 700, 700);
         primaryStage.setTitle("Juego de Gato");
         primaryStage.setScene(scene);
         primaryStage.show();

@@ -15,26 +15,19 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Alsov
+ * @author Graciela Porras, Allen Solano
  */
 public class Principal extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-//        Button btn = new Button();
-//        btn.setText("Say 'Hello World'");
-//        btn.setOnAction(new EventHandler<ActionEvent>() {
-//            
-//            @Override
-//            public void handle(ActionEvent event) {
-//                System.out.println("Hello World!");
-//            }
-//        });
+//        
         Interfaz in= new Interfaz();
 
         
 
-        Scene scene = new Scene(in.borderPane(), 700, 700);
+        Scene scene = new Scene(in.borderpane(), 775, 500);
+        
         primaryStage.setTitle("Juego de Gato");
         primaryStage.setScene(scene);
         primaryStage.show();

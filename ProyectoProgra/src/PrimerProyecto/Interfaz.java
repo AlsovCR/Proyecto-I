@@ -17,9 +17,11 @@ public class Interfaz {
 
     BorderPane inicial;
     Logica logica = new Logica();
-
     int fila = 0;
     int col = 0;
+    int contadorturnos=0;
+    int turno=logica.determinaTurno();
+               
 
     public BorderPane borderpane() {
         inicial = new BorderPane();
@@ -27,6 +29,7 @@ public class Interfaz {
         inicial.setPadding(new Insets(100, 70, 1, 60));//para colocar los GridPane
         inicial.setCenter(inicio());
         logica.generaMatriz();
+
         return inicial;
     }
 
@@ -72,14 +75,13 @@ public class Interfaz {
         });
         return conten;
     }
-
     public GridPane JuegoGato() { //Agregra botones
         GridPane contenedor = new GridPane();
         contenedor.setVgap(10);  //sirve para las distancias de label, botones...
 
         Button nuevojuego = new Button("Nuevo Juego");
-
         contenedor.add(nuevojuego, 0, 2);
+        
         Button reiniciar = new Button("Reiniciar");
         contenedor.add(reiniciar, 0, 4);
 
@@ -98,15 +100,22 @@ public class Interfaz {
                 cuadro.setStroke(Color.CHOCOLATE);//color de líneas
                 cuadro.setStrokeWidth(5);
                 matriz[f][c] = cuadro;
+                
                 matriz[f][c].setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
                         if (event.getButton() == MouseButton.PRIMARY) {//MouseButton.PRIMARY modifica en el momento de hacer click
-                            fila = (int) cuadro.getLayoutY();
-                            col = (int) cuadro.getLayoutX();
-                            System.out.println(col + "," + fila); //esto es para hacer prueba, obtener las cordenadas de los cuadros
-                            logica.modificaMatriz(1, fila, col);// se agraga un uno cuando se hace click
+                           
+                            fila = (int) cuadro.getLayoutY();//sacar coordenadas
+                            col = (int) cuadro.getLayoutX();// sacar coordenadas
+                            if (turno==1){
+                                contadorturnos++;
+                            logica.modificaMatriz(1, fila, col);// se agrega un uno cuando se hace click
                             logica.imprime();
+                            }else{
+                                logica.modificaMatriz(2, fila, col);// se agrega un uno cuando se hace click
+                                logica.imprime();
+                            }
                         }
                     }
                 });

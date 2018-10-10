@@ -7,15 +7,10 @@ package PrimerProyecto;
  */
 public class Logica {
     int tablero[][];
+    boolean ganador = false;
     public int[][] generaMatriz() {
         tablero = new int[3][3];
-        for (int f = 0; f < tablero.length; f++) {
-            for (int c = 0; c < tablero[0].length; c++) {
-                tablero[f][c] = 0;
-            }
-        }
         return tablero;
-
     }
     
     public void modificaMatriz(int jugada, int f, int c) { //se agregan las cordenadas, cuando se selecciona un cuadrante la matriz cambia
@@ -47,51 +42,41 @@ public class Logica {
             tablero[2][2] = jugada;
         }
         
+
     }
     public void imprime() {
        for (int f = 0; f < tablero.length; f++) {
             for (int c = 0; c < tablero[0].length; c++) {
                 System.out.print(tablero[f][c]);
+
             }
             System.out.println("");
         }
     }
-//    public void ganaFilas(int tablero[][], int jugada) {
-//
-//        for (int f = 0; f < tablero.length; f++) {
-//
-//            for (int c = 0; c < tablero[0].length; c++) {
-//                if (tablero[f][c] == jugada) {
-//                    jugada++;
-//                }
-//            }
-//        }
-//    }
-//
-//    public void ganaColumnas(int tablero[][], int jugada) {
-//        for (int c = 0; c < tablero[0].length; c++) {
-//
-//            for (int f = 0; f < tablero.length; f++) {
-//                if (tablero[f][c] == jugada) {
-//                   jugada++;
-//                }
-//            }
-//        }
-//    }
+  
+  public int determinaTurno(){
+        int turno = 1+(int) (Math.random()*2);
+        return turno;
+    }
+    public boolean hayGanador(){
+            
+ // Gana Filas
+      for (int f = 0; f < 3; f++) {
+          if ((tablero[0][f] == 1 && tablero[1][f] == 1 && tablero[2][f] == 1)) 
+             ganador  = true;  
+        }  
+ // Gana Columnas   
+    for (int c = 0 ; c<3; c++){
+        if ((tablero[c][0] ==1 && tablero[c][1] ==1 && tablero [c][2] == 1))
+        ganador = true;  
+    }
+ // Gana Diagonal
+ if ((tablero [0][0]== 1 && tablero [1][1] == 1 && tablero [2][2] == 1))
+     ganador = true;
+// Gana Diagonal Inversa     
+ if ((tablero [0][2]==1 && tablero [1][1] == 1 && tablero [2][0]==1))   
+    ganador = true;
+     
+ return ganador;
+    }
 }
-
-
-
-/* ganaFilas(int tablero[][], int jugada)
--
-ganaColum
-nas(int tablero[][], int jugada)
--
-ganaDiagonal(int tablero[][], int jugada)
--
-ganaDiagonalnversa(int tablero[][], int jugada)
--
-ganaJugadorUno(int tablero[][])
--
-gan
-aJugadorDos(int tablero[][])  */

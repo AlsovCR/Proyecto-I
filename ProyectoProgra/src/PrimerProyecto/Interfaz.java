@@ -5,11 +5,13 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 
@@ -21,8 +23,13 @@ public class Interfaz {
     int col = 0;
     int contadorturnos=0;
     int turno=logica.determinaTurno();
-               
+    Image X, O;
 
+    public Interfaz() { //agregar imagenes
+        this.X = new Image("assets/x-symbol.png");//poner X
+        this.O= new Image("assets/circle-outline (1).png");//poner O
+    }
+    
     public BorderPane borderpane() {
         inicial = new BorderPane();
         inicial.setStyle("-fx-background-color:PALEGOLDENROD");
@@ -109,12 +116,15 @@ public class Interfaz {
                             fila = (int) cuadro.getLayoutY();//sacar coordenadas
                             col = (int) cuadro.getLayoutX();// sacar coordenadas
                             if (turno==1){
-                                contadorturnos++;
+                            cuadro.setFill(new ImagePattern(X));
                             logica.modificaMatriz(1, fila, col);// se agrega un uno cuando se hace click
                             logica.imprime();
+                            turno = 2;
                             }else{
+                                cuadro.setFill(new ImagePattern(O));
                                 logica.modificaMatriz(2, fila, col);// se agrega un uno cuando se hace click
                                 logica.imprime();
+                                turno=1;
                             }
                         }
                     }

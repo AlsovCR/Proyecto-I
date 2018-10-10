@@ -37,9 +37,13 @@ public class Logica {
             
             for (int c = 0 ; c<tablero[0].length; c++){
                 
+
+                System.out.println("");
+
             }
             
         }
+        return 0;
         
         
     }
